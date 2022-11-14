@@ -40,6 +40,7 @@ function Clubpage() {
       console.log(err);
     }
   };
+  const [value, onChange] = useState(new Date());
 
   useEffect(() => {
     get_club();
@@ -74,10 +75,32 @@ function Clubpage() {
           </Cp_box>
         </div>
         <div className="clubpage_item">
-          <Club_Todo />
+          <Club_Todo
+            date={moment(value).format('YYYY-MM-DD')}
+            club_id={club_id}
+          />
         </div>
         <div className="clubpage_item">
-          <Calendar_part />
+          <Calendar
+            onChange={onChange}
+            locale="en"
+            value={value}
+            format={(locale, date) => date.toLocaleString('en')}
+            formatMonthYear={(locale, date) =>
+              date.toLocaleString('kr', {
+                month: 'numeric',
+                year: 'numeric',
+              })
+            }
+            formatDay={(locale, date) =>
+              date.toLocaleString('en', {
+                day: 'numeric',
+              })
+            }
+            next2Label={null}
+            prev2Label={null}
+            showNeighboringMonth={false}
+          />
         </div>
         <div className="clubpage_item">
           <Experience_Post club_id={club_id} />

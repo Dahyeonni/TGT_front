@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-function Todo({ date, clubs }) {
+function Todo({ date, clubs, user_id }) {
   const [input, setInput] = useState([]);
 
   const [data, setData] = useState({
@@ -86,6 +86,8 @@ function Todo({ date, clubs }) {
                       {todos
                         .filter(todo => todo.todo_date === date)
                         .filter(todo => todo.club === club.id)
+                        .filter(todo => todo.user === user_id)
+
                         .map(todo => {
                           const put_check = async () => {
                             try {
