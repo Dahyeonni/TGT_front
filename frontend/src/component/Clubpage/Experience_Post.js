@@ -5,12 +5,10 @@ import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-import SwiperCore, { Grid, Pagination } from 'swiper';
 const plus_image = `${process.env.PUBLIC_URL + '/images/plus.png'}`;
 
 function Experience_Post({ club_id }) {
-  let post_list1 = '';
-  let post_list2 = '';
+  const [post_bool, setPost_bool] = useState(false);
   const [post_list, setPostList] = useState([]);
   const [post_image, setPostImage] = useState([]);
   const get_post_list = async () => {
@@ -28,7 +26,7 @@ function Experience_Post({ club_id }) {
 
   useEffect(() => {
     get_post_list();
-  }, []);
+  }, [club_id]);
 
   const post_experience = async image => {
     let formData = new FormData();
@@ -43,6 +41,7 @@ function Experience_Post({ club_id }) {
       })
       .then(function (res) {
         // console.log('experience 이미지 post 성공!');
+        setPost_bool(!post_bool);
       })
       .catch(function (err) {
         console.log(err);
@@ -57,7 +56,7 @@ function Experience_Post({ club_id }) {
 
   useEffect(() => {
     get_post_list();
-  }, [get_post_list, post_image]);
+  }, [post_bool]);
   return (
     <>
       <Experience>
