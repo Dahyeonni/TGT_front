@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+
 function List({ clubs }) {
   //배경색 변경
   //function Mycolor() {
   //  var element = document.getElementById("myID");
   //  element.style.backgroundColor='#FFCC80';
   //};
-  const navigate = useNavigate();
   return (
     <>
       <List_div>
@@ -25,17 +24,11 @@ function List({ clubs }) {
               height: '6vmin',
               borderRadius: '20%',
               float: 'left',
-              margin: '1vmin',
+              marginRight: '1vmin',
             };
             return (
               <>
-                <List_section
-                  id="myID"
-                  // onClick="Mycolor()"
-                  onClick={() => {
-                    navigate(`/Clubpage/${club.id}`);
-                  }}
-                >
+                <List_section>
                   <Club_img style={image_style2}></Club_img>
                   <List_box>
                     <Club_name>{club.name}</Club_name>
@@ -63,24 +56,24 @@ const Title = styled.section`
 `;
 const List_body = styled.section`
   margin: 1vmin;
-  overflow: auto;
 `;
 const List_section = styled.div`
   min-height: 10vmin;
   margin-top: 1vmin;
   margin-bottom: 1vmin;
   cursor: pointer;
+  height: 6vmin;
+  align-itmes: center;
 `;
 
 const List_box = styled.div`
-  margin-top: 2vmin;
-  margin-bottom: 1vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top:1vmin;
 `;
 const Club_img = styled.div`
-  width: 12vmin;
-  borderradius: 10px;
-  float: letf;
-  margin-left: 2vmin;
+
 `;
 const Club_name = styled.div`
   font-weight: 400;
