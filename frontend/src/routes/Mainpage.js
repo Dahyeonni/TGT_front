@@ -25,7 +25,7 @@ function Mainpage(props) {
   const get_profile = async () => {
     try {
       await axios.get('http://127.0.0.1:8000/accounts/myprofile').then(res => {
-        console.log(res);
+        // console.log(res);
         setProfile(res.data);
         setProfile2(res.data.profile);
         setUser_club_list(res.data.user_club_list);

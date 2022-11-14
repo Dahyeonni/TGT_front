@@ -21,8 +21,8 @@ function Navbar(props) {
   const [user_club_list, setUser_club_list] = useState([]);
 
   useEffect(() => {
-    console.log(modal);
-    console.log(user_club_list);
+    // console.log(modal);
+    // console.log(user_club_list);
   }, [modal]);
   const outside = useRef();
   const get_profile = async () => {

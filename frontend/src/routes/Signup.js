@@ -56,7 +56,7 @@ function Signup(props) {
         .then(res => {
           post_login();
           navigate('/Signup2');
-          console.log(res);
+          // console.log(res);
         });
     } catch (err) {
       const errormessage = [];

@@ -18,7 +18,7 @@ function Experience_Post({ club_id }) {
       await axios
         .get(`http://127.0.0.1:8000/club/${club_id}/post`)
         .then(res => {
-          console.log(`Post Exeperience 불러오기${club_id} 성공!`, res);
+          // console.log(`Post Exeperience 불러오기${club_id} 성공!`, res);
           setPostList(res.data);
         });
     } catch (err) {
@@ -42,10 +42,10 @@ function Experience_Post({ club_id }) {
         },
       })
       .then(function (res) {
-        console.log('experience 이미지 post 성공!');
+        // console.log('experience 이미지 post 성공!');
       })
       .catch(function (err) {
-        console.log(err, 'post 실패');
+        console.log(err);
       });
   };
 

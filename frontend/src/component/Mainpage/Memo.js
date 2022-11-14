@@ -11,7 +11,7 @@ function Memo({ my_memo }) {
       await axios
         .patch('http://127.0.0.1:8000/accounts/profile_update', data)
         .then(res => {
-          console.log(res);
+          // console.log(res);
         });
     } catch (err) {
       console.log(err);

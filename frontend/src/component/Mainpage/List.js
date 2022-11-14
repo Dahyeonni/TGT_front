@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 function List({ clubs }) {
   const [isActive, setIsActive] = useState(false);
+  const navigate = useNavigate();
   const handleClick = () => {
     // 👇️ toggle
     setIsActive(current => !current);
     // 👇️ or set to true
     // setIsActive(true);
   };
-  const bgColor ='';
+  const bgColor = '';
   return (
     <>
       <List_div>
@@ -31,12 +32,17 @@ function List({ clubs }) {
             };
             return (
               <>
-                <List_section style={{
-                  backgroundColor: isActive ? '#FFCC80' : '',
-                  borderRadius: '10px',
-                  height: '4vmins'
-                }}
-                  onClick={handleClick}>
+                <List_section
+                  style={{
+                    backgroundColor: isActive ? '#FFCC80' : '',
+                    borderRadius: '10px',
+                    height: '4vmins',
+                  }}
+                  onClick={() => {
+                    handleClick();
+                    navigate(`/Clubpage/${club.id}`);
+                  }}
+                >
                   <Club_img style={image_style2}></Club_img>
                   <List_box>
                     <Club_name>{club.name}</Club_name>
@@ -69,7 +75,7 @@ const List_section = styled.div`
   margin-top: 1vmin;
   margin-bottom: 1vmin;
   padding: 1vmin;
-  borderRadius: 50px;
+  borderradius: 50px;
   cursor: pointer;
   height: 7vmin;
   align-itmes: center;
@@ -79,11 +85,9 @@ const List_box = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top:1vmin;
+  padding-top: 1vmin;
 `;
-const Club_img = styled.div`
-
-`;
+const Club_img = styled.div``;
 const Club_name = styled.div`
   font-weight: 600;
   font-size: 1.5vmin;
