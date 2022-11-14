@@ -30,6 +30,7 @@ function Mainpage(props) {
         setProfile2(res.data.profile);
         setUser_club_list(res.data.user_club_list);
         setUser_todo_list(res.data.user_todo_list);
+        sessionStorage.setItem('userid', res.data.profile.id);
       });
     } catch (err) {
       console.log(err);
@@ -86,6 +87,7 @@ function Mainpage(props) {
           <Todo
             date={moment(value).format('YYYY-MM-DD')}
             clubs={user_club_list}
+            user_id={profile_info2.id}
           />
         </div>
         <div className="item club_list">

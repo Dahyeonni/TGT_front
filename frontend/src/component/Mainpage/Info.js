@@ -1,7 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+const edit_image = `${process.env.PUBLIC_URL + '/images/edit.png'}`;
 function Info({ id, email, username, user_image, content }) {
+  const navigate = useNavigate();
+
   const imageUrl = 'http://127.0.0.1:8000' + user_image;
   const image_style = {
     backgroundImage: `url(${imageUrl})`,
@@ -25,7 +29,14 @@ function Info({ id, email, username, user_image, content }) {
           <Content>{content}</Content>
         </Intro_text>
       </Profile>
-      <Number></Number>
+      <Number>
+        <Edit
+          src={edit_image}
+          onClick={() => {
+            navigate('/Signup2');
+          }}
+        />
+      </Number>
     </Container>
   );
 }
@@ -38,6 +49,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
+  position: relative;
 `;
 
 const Profile = styled.div`
@@ -66,4 +78,12 @@ const Email = styled.section`
   opacity: 0.4;
   font-size: 1.5vmin;
   margin-bottom: 2vmin;
+`;
+
+const Edit = styled.img`
+  position: absolute;
+  right: 1vmin;
+  top: 1vmin;
+  width: 3vmin;
+  cursor: pointer;
 `;

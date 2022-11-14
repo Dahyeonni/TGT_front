@@ -75,10 +75,10 @@ const List_section = styled.div`
   margin-top: 1vmin;
   margin-bottom: 1vmin;
   padding: 1vmin;
-  borderradius: 50px;
+  border-radius: 50px;
   cursor: pointer;
   height: 7vmin;
-  align-itmes: center;
+  align-items: center;
 `;
 
 const List_box = styled.div`
