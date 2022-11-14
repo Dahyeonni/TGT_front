@@ -28,7 +28,7 @@ function Postdetail({
       await axios
         .post(`http://127.0.0.1:8000/accounts/club_regist/${id}`)
         .then(res => {
-          console.log(res);
+          // console.log(res);
         });
     } catch (err) {
       console.log(err);

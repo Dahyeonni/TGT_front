@@ -33,7 +33,7 @@ function Clubpage() {
   const get_club = async () => {
     try {
       await axios.get(`http://127.0.0.1:8000/club/${club_id}`).then(res => {
-        console.log(res);
+        // console.log(res);
         setClub(res.data);
       });
     } catch (err) {
@@ -53,7 +53,6 @@ function Clubpage() {
       </style>
       <div className="clubpage_container container">
         <div className="clubpage_item">
-          
           <Cp_img style={image_style3}></Cp_img>
           <Cp_box>
             <Cp_name>{club.name}</Cp_name>
@@ -62,20 +61,21 @@ function Clubpage() {
               <img src={club_people} alt="" />
               {club.user}
             </Cp_user>
-              
+
             <Cp_date>
-              <img src={detail_calendar_icon}/>
+              <img src={detail_calendar_icon} />
               {club.start_date} ~ {club.end_date}
             </Cp_date>
 
             <Cp_howto>
-            <Cp_howtoto>How to</Cp_howtoto>
+              <Cp_howtoto>How to</Cp_howtoto>
               {club.howto}
             </Cp_howto>
-
           </Cp_box>
         </div>
-        <div className="clubpage_item"></div>
+        <div className="clubpage_item">
+          <Club_Todo />
+        </div>
         <div className="clubpage_item">
           <Calendar_part />
         </div>
@@ -91,17 +91,13 @@ export default Clubpage;
 const Cp_box = styled.div`
   margin: 2.5vmin;
 `;
-const Cp_img = styled.div`
-
-`;
+const Cp_img = styled.div``;
 const Cp_name = styled.div`
   font-size: 2.5vmin;
   font-weight: 600;
   margin-bottom: 1vmin;
 `;
-const Cp_intro = styled.div`
-
-`;
+const Cp_intro = styled.div``;
 const Cp_user = styled.div`
   align-items: center;
   color: #737373;
@@ -111,12 +107,11 @@ const Cp_date = styled.div`
   align-items: flex_end;
   display: flex;
   padding-top: 2vmins;
-
 `;
 const Cp_howto = styled.div`
   margin-top: 2vmin;
-  word-spacing:2px;
-  letter-spacing :0.08em
+  word-spacing: 2px;
+  letter-spacing: 0.08em;
 `;
 const Cp_howtoto = styled.div`
   font-size: 2.5vmin;

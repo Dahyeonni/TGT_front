@@ -17,7 +17,7 @@ function PostListPage() {
   const get_club_list = async () => {
     try {
       await axios.get('http://127.0.0.1:8000/club/').then(res => {
-        console.log(res);
+        // console.log(res);
         setClubList(res.data);
       });
     } catch (err) {

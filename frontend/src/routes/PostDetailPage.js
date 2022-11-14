@@ -15,7 +15,7 @@ function PostDetailPage(props) {
   const get_club = async () => {
     try {
       await axios.get(`http://127.0.0.1:8000/club/${club_id}`).then(res => {
-        console.log(res);
+        // console.log(res);
         setClub(res.data);
       });
     } catch (err) {

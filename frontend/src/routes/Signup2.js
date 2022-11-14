@@ -27,9 +27,9 @@ function Signup2(props) {
 
     formData.append('user_image', user_image[0]);
     formData.append('content', content);
-    for (let key of formData.keys()) {
-      console.log(key, ':', formData.get(key));
-    }
+    // for (let key of formData.keys()) {
+    //   console.log(key, ':', formData.get(key));
+    // }
     await axios
       .patch('http://127.0.0.1:8000/accounts/profile_update', formData, {
         headers: {
