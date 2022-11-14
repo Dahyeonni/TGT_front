@@ -43,21 +43,22 @@ function Todo({ date, clubs }) {
                 <>
                   <Club>
                     <ClubName>{club.name}</ClubName>
-
-                    <Input
-                      placeholder="오늘의 할 일을 입력해주세요"
-                      onChange={e => {
-                        setData({
-                          club: club.id,
-                          title: e.target.value,
-                          todo_date: date,
-                        });
-                      }}
-                    ></Input>
-                    <Plus_icon
-                      src="images/plus.png"
-                      onClick={post_todo}
-                    ></Plus_icon>
+                    <Input_div>
+                      <Input
+                        placeholder="오늘의 할 일을 입력해주세요"
+                        onChange={e => {
+                          setData({
+                            club: club.id,
+                            title: e.target.value,
+                            todo_date: date,
+                          });
+                        }}
+                      ></Input>
+                      <Plus_icon
+                        src="images/plus.png"
+                        onClick={post_todo}
+                      ></Plus_icon>
+                    </Input_div>
                   </Club>
                   <br />
                 </>
@@ -100,6 +101,14 @@ const ClubName = styled.h3`
 const Club = styled.div`
   min-height: 13vmin;
 `;
+
+const Input_div = styled.section`
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffdfae;
+  border-radius: 5px;
+  height: 3vmin;
+`;
 const Input = styled.input`
   box-sizing: border-box;
   background: #ffdfae;
@@ -109,7 +118,7 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
-  width: 94%;
+  width: 90%;
   padding: 0.7vmin;
   height: 3vmin;
   font-family: 'DMSans';
@@ -119,10 +128,10 @@ const Input = styled.input`
 
 const Plus_icon = styled.img`
   box-sizing: border-box;
-  width: 6%;
   cursor: pointer;
   height: 3vmin;
-  background: #ffdfae;
+  /* background: #ffdfae; */
   border-radius: 0px 5px 5px 0;
   padding: 0.4vmin;
+  float: right;
 `;
