@@ -75,101 +75,46 @@ function Experience_Post({ club_id }) {
           ></input>
         </Title_area>
         <ExperienceBody>
-          {post_list.length > 5 ? (
-            <>
-              <Swiper
-                style={{ width: '100%' }}
-                slidesPerView={5}
-                mousewheel={true}
-                spaceBetween={25}
-                scrollbar={{ draggable: true }}
-              >
-                {post_list.length > 10
-                  ? post_list
-                      .slice(0, parseInt((post_list.length + 1) / 2))
-                      .map((data, id) => (
-                        <SwiperSlide key={id}>
-                          <img
-                            src={`http://127.0.0.1:8000${data.post}`}
-                            alt="post 이미지"
-                            height={'140vmax'}
-                            width={'100%'}
-                            style={{ borderRadius: '15px' }}
-                          />
-                        </SwiperSlide>
-                      ))
-                  : post_list.slice(0, 5).map((data, id) => (
-                      <SwiperSlide key={id}>
-                        <img
-                          src={`http://127.0.0.1:8000${data.post}`}
-                          alt="post 이미지"
-                          height={'140vmax'}
-                          width={'100%'}
-                          style={{ borderRadius: '15px' }}
-                        />
-                      </SwiperSlide>
-                    ))}
-              </Swiper>
-              <Swiper
-                style={{ width: '100%' }}
-                slidesPerView={5}
-                mousewheel={true}
-                spaceBetween={25}
-                scrollbar={{ draggable: true }}
-              >
-                {post_list.length > 10
-                  ? post_list
-                      .slice(
-                        parseInt((post_list.length + 1) / 2),
-                        post_list.length,
-                      )
-                      .map((data, id) => (
-                        <SwiperSlide key={id}>
-                          <img
-                            src={`http://127.0.0.1:8000${data.post}`}
-                            alt="post 이미지"
-                            height={'140vmax'}
-                            width={'100%'}
-                            style={{ borderRadius: '15px' }}
-                          />
-                        </SwiperSlide>
-                      ))
-                  : post_list.slice(5, post_list.length).map((data, id) => (
-                      <SwiperSlide key={id}>
-                        <img
-                          src={`http://127.0.0.1:8000${data.post}`}
-                          alt="post 이미지"
-                          height={'140vmax'}
-                          width={'100%'}
-                          style={{ borderRadius: '15px' }}
-                        />
-                      </SwiperSlide>
-                    ))}
-              </Swiper>
-            </>
-          ) : (
-            <>
-              <Swiper
-                style={{ width: '100%' }}
-                slidesPerView={5}
-                mousewheel={true}
-                spaceBetween={25}
-                scrollbar={{ draggable: true }}
-              >
-                {post_list.map((data, id) => (
-                  <SwiperSlide key={id}>
-                    <img
-                      src={`http://127.0.0.1:8000${data.post}`}
-                      alt="post 이미지"
-                      height={'140vmax'}
-                      width={'100%'}
-                      style={{ borderRadius: '15px' }}
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </>
-          )}
+          <Swiper
+            style={{ width: '100%' }}
+            slidesPerView={6}
+            mousewheel={true}
+            spaceBetween={25}
+            scrollbar={{ draggable: true }}
+          >
+            {post_list.slice(0, 6).map((data, id) => (
+              <SwiperSlide key={id}>
+                <img
+                  src={`http://127.0.0.1:8000${data.post}`}
+                  alt="post 이미지"
+                  height={'100vh'}
+                  width={'100%'}
+                  style={{ borderRadius: '15px' }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <br />
+          <Swiper
+            style={{ width: '100%' }}
+            slidesPerView={6}
+            mousewheel={true}
+            spaceBetween={25}
+            scrollbar={{ draggable: true }}
+          >
+            {post_list.slice(6).map((data, id) => (
+              <SwiperSlide key={id}>
+                <img
+                  src={`http://127.0.0.1:8000${data.post}`}
+                  alt="post 이미지"
+                  height={'100vh'}
+                  width={'100%'}
+                  style={{ borderRadius: '15px' }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <br />
         </ExperienceBody>
       </Experience>
     </>
@@ -198,6 +143,9 @@ const Plus = {
 const ExperienceBody = styled.div`
   width: 100%;
   margin-top: 3vmin;
+  height: 100%;
+  margin: auto;
+  max-height: fit-content;
 `;
 const Title_area = styled.div`
   width: 100%;
