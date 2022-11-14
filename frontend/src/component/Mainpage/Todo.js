@@ -13,13 +13,36 @@ function Todo({ date, clubs }) {
     todo_date: '',
   });
 
+  const [post, setPost] = useState(false);
+
   const post_todo = async () => {
     try {
-      await axios.post('http://127.0.0.1:8000/club/todolist/', data).then();
+      await axios
+        .post('http://127.0.0.1:8000/club/todolist/', data)
+        .then(res => {
+          console.log('투두리스트가 저장되었습니다.');
+          setPost(!post);
+        });
     } catch (err) {
       console.log(err);
     }
   };
+
+  const [todos, setTodo] = useState([]);
+  const get_todo = async () => {
+    try {
+      await axios.get('http://127.0.0.1:8000/club/todolist/').then(res => {
+        console.log('투두리스트 조회', res);
+        setTodo(res.data);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    get_todo();
+  }, [post]);
+
   return (
     <>
       <Todo_div>
@@ -56,9 +79,68 @@ function Todo({ date, clubs }) {
                       ></Input>
                       <Plus_icon
                         src="images/plus.png"
-                        onClick={post_todo}
+                        onClick={() => post_todo()}
                       ></Plus_icon>
                     </Input_div>
+                    <>
+                      {todos
+                        .filter(todo => todo.todo_date === date)
+                        .filter(todo => todo.club === club.id)
+                        .map(todo => {
+                          const put_check = async () => {
+                            try {
+                              await axios
+                                .put(
+                                  `http://127.0.0.1:8000/club/todoupdate/${todo.id}/`,
+                                  {
+                                    club: club.id,
+                                    title: todo.title,
+                                    box: !todo.box,
+                                  },
+                                )
+                                .then(res => {
+                                  console.log('투두리스트 조회', res);
+                                  setTodo(res.data);
+                                });
+                            } catch (err) {
+                              console.log(err);
+                            }
+                          };
+
+                          const delete_todo = async () => {
+                            try {
+                              await axios
+                                .delete(
+                                  `http://127.0.0.1:8000/club/todoupdate/${todo.id}/`,
+                                )
+                                .then(res => console.log(res));
+                            } catch (err) {
+                              console.log(err);
+                            }
+                          };
+                          return (
+                            <>
+                              <Todo_list>
+                                <Checkbox
+                                  type="checkbox"
+                                  defaultChecked={todo.box}
+                                  onClick={() => {
+                                    put_check();
+                                  }}
+                                />
+                                <Todo_text>{todo.title}</Todo_text>
+                                <Trash
+                                  src="images/trash.png"
+                                  alt="삭제"
+                                  onClick={() => {
+                                    delete_todo();
+                                  }}
+                                />
+                              </Todo_list>
+                            </>
+                          );
+                        })}
+                    </>
                   </Club>
                   <br />
                 </>
@@ -118,7 +200,7 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
-  width: 90%;
+  width: 80%;
   padding: 0.7vmin;
   height: 3vmin;
   font-family: 'DMSans';
@@ -134,4 +216,25 @@ const Plus_icon = styled.img`
   border-radius: 0px 5px 5px 0;
   padding: 0.4vmin;
   float: right;
+`;
+
+const Todo_list = styled.div`
+  display: flex;
+  height: 4vmin;
+  position: relative;
+  align-items: center;
+`;
+const Checkbox = styled.input`
+  display: flex;
+`;
+
+const Todo_text = styled.section`
+  display: flex;
+`;
+
+const Trash = styled.img`
+  position: absolute;
+  right: 0;
+  width: 2.5vmin;
+  cursor: pointer;
 `;
