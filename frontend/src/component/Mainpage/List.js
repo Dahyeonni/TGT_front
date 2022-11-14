@@ -7,7 +7,6 @@ function List({ clubs }) {
   const handleClick = () => {
     // 👇️ toggle
     setIsActive(current => !current);
-
     // 👇️ or set to true
     // setIsActive(true);
   };
