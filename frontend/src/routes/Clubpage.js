@@ -37,9 +37,7 @@ function Clubpage() {
       </style>
       <div className="clubpage_container container">
         <div className="clubpage_item">{club.name}</div>
-        <div className="clubpage_item">
-          <Club_Todo />
-        </div>
+        <div className="clubpage_item"></div>
         <div className="clubpage_item">
           <Calendar_part />
         </div>
