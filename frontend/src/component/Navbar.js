@@ -80,7 +80,7 @@ function Navbar(props) {
             alt="writepage"
           />
         </NavLink>
-        <NavLink to="/" onClick={sessionStorage.clear()}>
+        <NavLink to="/" onClick={() => sessionStorage.clear()}>
           <img
             src={logout_img}
             style={logout}
