@@ -3,6 +3,7 @@ import Navbar from '../../component/Navbar';
 import '../../static/css/writepage.css';
 import '../../static/css/postdetail.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function Postdetail({
   id,
   title,
@@ -35,6 +36,7 @@ function Postdetail({
     }
   };
 
+  const navigate = useNavigate();
   const imageUrl = 'http://127.0.0.1:8000' + image;
   return (
     <>
@@ -58,7 +60,13 @@ function Postdetail({
               <div className="club_c">
                 <section className="club_title2">{title}</section>
                 <div className="detail_btn_btn">
-                  <button className="detail_btn" onClick={() => post_enroll()}>
+                  <button
+                    className="detail_btn"
+                    onClick={() => {
+                      navigate('/Postlist');
+                      post_enroll();
+                    }}
+                  >
                     클럽 가입하기
                   </button>
                 </div>
