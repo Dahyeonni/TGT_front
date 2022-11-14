@@ -43,6 +43,9 @@ function Todo({ date, clubs, user_id }) {
     get_todo();
   }, [post]);
 
+  const onReset = () => {
+    setData({ club: '', title: '', todo_date: '' });
+  };
   return (
     <>
       <Todo_div>
@@ -79,7 +82,10 @@ function Todo({ date, clubs, user_id }) {
                       ></Input>
                       <Plus_icon
                         src="images/plus.png"
-                        onClick={() => post_todo()}
+                        onClick={() => {
+                          post_todo();
+                          onReset();
+                        }}
                       ></Plus_icon>
                     </Input_div>
                     <>
