@@ -54,7 +54,7 @@ function Writepage(props) {
     // }
     await axios
       .post(
-        'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/',
+        'https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/',
         formData,
         {
           headers: {

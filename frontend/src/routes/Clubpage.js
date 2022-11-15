@@ -17,7 +17,9 @@ function Clubpage() {
   const { club_id } = useParams();
   const [club, setClub] = useState([]);
   const navigate = useNavigate();
-  const imageUrl = 'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000' + club.image;
+  const imageUrl =
+    'https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000' +
+    club.image;
   const image_style3 = {
     backgroundImage: `url(${imageUrl})`,
     backgroundRepeat: 'no-repeat',
@@ -37,7 +39,7 @@ function Clubpage() {
     try {
       await axios
         .post(
-          `http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/club_regist/${club_id}`,
+          `https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/club_regist/${club_id}`,
         )
         .then(res => {
           // console.log(res);
@@ -50,7 +52,7 @@ function Clubpage() {
     try {
       await axios
         .get(
-          `http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/${club_id}`,
+          `https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/${club_id}`,
         )
         .then(res => {
           // console.log(res);

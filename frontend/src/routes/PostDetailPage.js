@@ -16,7 +16,7 @@ function PostDetailPage(props) {
     try {
       await axios
         .get(
-          `http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/${club_id}`,
+          `https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/${club_id}`,
         )
         .then(res => {
           // console.log(res);
