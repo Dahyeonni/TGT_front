@@ -74,7 +74,7 @@ function Postdetail({
                   <button
                     className="detail_btn"
                     onClick={() => {
-                      navigate('/Postlist');
+                      navigate('/Mainpage');
                       post_enroll();
                       get_club_list();
                     }}
