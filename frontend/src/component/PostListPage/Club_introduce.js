@@ -15,9 +15,7 @@ function Club_introduce({
   intro,
   image,
 }) {
-  const imageUrl =
-    'https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000' +
-    image;
+  const imageUrl = 'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000' + image;
   const navigate = useNavigate();
 
   return (

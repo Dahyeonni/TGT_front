@@ -26,7 +26,7 @@ function Mainpage(props) {
     try {
       await axios
         .get(
-          'https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/myprofile',
+          'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/myprofile',
         )
         .then(res => {
           // console.log(res);

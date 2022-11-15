@@ -18,9 +18,7 @@ function List({ clubs }) {
         <Title>Club list</Title>
         <List_body>
           {clubs.map(club => {
-            const imageUrl =
-              'https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000' +
-              club.image;
+            const imageUrl = 'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000' + club.image;
             const image_style2 = {
               backgroundImage: `url(${imageUrl})`,
               backgroundRepeat: 'no-repeat',

@@ -33,7 +33,7 @@ function Login(props) {
     try {
       await axios
         .post(
-          'https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/login',
+          'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/login',
           inputs,
         )
         .then(res => {
