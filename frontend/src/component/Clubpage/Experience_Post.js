@@ -14,7 +14,9 @@ function Experience_Post({ club_id }) {
   const get_post_list = async () => {
     try {
       await axios
-        .get(`http://127.0.0.1:8000/club/${club_id}/post`)
+        .get(
+          `http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/${club_id}/post`,
+        )
         .then(res => {
           // console.log(`Post Exeperience 불러오기${club_id} 성공!`, res);
           setPostList(res.data);
@@ -34,11 +36,15 @@ function Experience_Post({ club_id }) {
     formData.append('post', image);
 
     await axios
-      .post(`http://127.0.0.1:8000/club/${club_id}/post`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
+      .post(
+        `http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/${club_id}/post`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
         },
-      })
+      )
       .then(function (res) {
         // console.log('experience 이미지 post 성공!');
         setPost_bool(!post_bool);

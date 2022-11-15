@@ -18,10 +18,14 @@ function Club_Todo({ club_id, date }) {
 
   const get_todo = async () => {
     try {
-      await axios.get('http://127.0.0.1:8000/club/todolist/').then(res => {
-        console.log('투두리스트 조회', res);
-        setTodo(res.data);
-      });
+      await axios
+        .get(
+          'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/todolist/',
+        )
+        .then(res => {
+          // console.log('투두리스트 조회', res);
+          setTodo(res.data);
+        });
     } catch (err) {
       console.log(err);
     }
@@ -35,7 +39,10 @@ function Club_Todo({ club_id, date }) {
   const post_todo = async () => {
     try {
       await axios
-        .post('http://127.0.0.1:8000/club/todolist/', data)
+        .post(
+          'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/todolist/',
+          data,
+        )
         .then(res => {
           console.log('투두리스트가 저장되었습니다.');
           setPost(!post);
@@ -75,14 +82,17 @@ function Club_Todo({ club_id, date }) {
             const put_check = async () => {
               try {
                 await axios
-                  .patch(`http://127.0.0.1:8000/club/todolist/${todo.id}/`, {
-                    club: club_id,
-                    title: todo.title,
-                    box: !todo.box,
-                    todo_date: date,
-                  })
+                  .patch(
+                    `http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/todolist/${todo.id}/`,
+                    {
+                      club: club_id,
+                      title: todo.title,
+                      box: !todo.box,
+                      todo_date: date,
+                    },
+                  )
                   .then(res => {
-                    console.log('투두리스트 조회', res);
+                    // console.log('투두리스트 조회', res);
                     setTodo(res.data);
                   });
               } catch (err) {
@@ -93,7 +103,9 @@ function Club_Todo({ club_id, date }) {
             const delete_todo = async () => {
               try {
                 await axios
-                  .delete(`http://127.0.0.1:8000/club/todolist/${todo.id}/`)
+                  .delete(
+                    `http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/todolist/${todo.id}/`,
+                  )
                   .then(res => console.log(res));
               } catch (err) {
                 console.log(err);

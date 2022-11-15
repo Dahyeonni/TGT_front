@@ -24,14 +24,18 @@ function Mainpage(props) {
 
   const get_profile = async () => {
     try {
-      await axios.get('http://127.0.0.1:8000/accounts/myprofile').then(res => {
-        // console.log(res);
-        setProfile(res.data);
-        setProfile2(res.data.profile);
-        setUser_club_list(res.data.user_club_list);
-        setUser_todo_list(res.data.user_todo_list);
-        sessionStorage.setItem('userid', res.data.profile.id);
-      });
+      await axios
+        .get(
+          'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/myprofile',
+        )
+        .then(res => {
+          // console.log(res);
+          setProfile(res.data);
+          setProfile2(res.data.profile);
+          setUser_club_list(res.data.user_club_list);
+          setUser_todo_list(res.data.user_todo_list);
+          sessionStorage.setItem('userid', res.data.profile.id);
+        });
     } catch (err) {
       console.log(err);
     }

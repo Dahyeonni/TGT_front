@@ -53,11 +53,15 @@ function Writepage(props) {
     //   console.log(key, ':', formData.get(key));
     // }
     await axios
-      .post('http://127.0.0.1:8000/club/', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
+      .post(
+        'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
         },
-      })
+      )
       .then(function (res) {
         // console.log('post 성공');
         navigate('/PostList');

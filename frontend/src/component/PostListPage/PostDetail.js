@@ -27,10 +27,14 @@ function Postdetail({
   const [clublist, setClubList] = useState([]);
   const get_club_list = async () => {
     try {
-      await axios.get('http://127.0.0.1:8000/club/').then(res => {
-        // console.log(res);
-        setClubList(res.data);
-      });
+      await axios
+        .get(
+          'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/',
+        )
+        .then(res => {
+          // console.log(res);
+          setClubList(res.data);
+        });
     } catch (err) {
       console.log(err);
     }
@@ -38,7 +42,9 @@ function Postdetail({
   const post_enroll = async () => {
     try {
       await axios
-        .post(`http://127.0.0.1:8000/accounts/club_regist/${id}`)
+        .post(
+          `http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/club_regist/${id}`,
+        )
         .then(res => {
           // console.log(res);
         });

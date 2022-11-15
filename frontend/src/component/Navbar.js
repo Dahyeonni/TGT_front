@@ -27,10 +27,14 @@ function Navbar(props) {
   const outside = useRef();
   const get_profile = async () => {
     try {
-      await axios.get('http://127.0.0.1:8000/accounts/myprofile').then(res => {
-        setUser_club_list(res.data.user_club_list);
-        // console.log(res.data.user_club_list);
-      });
+      await axios
+        .get(
+          'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/myprofile',
+        )
+        .then(res => {
+          setUser_club_list(res.data.user_club_list);
+          // console.log(res.data.user_club_list);
+        });
     } catch (err) {
       console.log(err);
     }
