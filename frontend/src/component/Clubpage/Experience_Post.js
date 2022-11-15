@@ -15,7 +15,7 @@ function Experience_Post({ club_id }) {
     try {
       await axios
         .get(
-          `http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/${club_id}/post`,
+          `https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/${club_id}/post`,
         )
         .then(res => {
           // console.log(`Post Exeperience 불러오기${club_id} 성공!`, res);
@@ -37,7 +37,7 @@ function Experience_Post({ club_id }) {
 
     await axios
       .post(
-        `http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/${club_id}/post`,
+        `https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/${club_id}/post`,
         formData,
         {
           headers: {
@@ -90,7 +90,7 @@ function Experience_Post({ club_id }) {
             {post_list.slice(0, 6).map((data, id) => (
               <SwiperSlide key={id}>
                 <img
-                  src={`http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000${data.post}`}
+                  src={`https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000${data.post}`}
                   alt="post 이미지"
                   height={'100vh'}
                   width={'100%'}
@@ -110,7 +110,7 @@ function Experience_Post({ club_id }) {
             {post_list.slice(6).map((data, id) => (
               <SwiperSlide key={id}>
                 <img
-                  src={`http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000${data.post}`}
+                  src={`https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000${data.post}`}
                   alt="post 이미지"
                   height={'100vh'}
                   width={'100%'}
