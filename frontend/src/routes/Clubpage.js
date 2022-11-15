@@ -180,4 +180,5 @@ const Quit = styled.button`
   padding: 1vmin;
   font-family: 'DMSans';
   font-weight: 600;
+  cursor: pointer;
 `;
