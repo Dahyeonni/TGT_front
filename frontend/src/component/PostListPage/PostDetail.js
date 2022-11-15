@@ -24,6 +24,17 @@ function Postdetail({
   const detail_calendar_icon = `${
     process.env.PUBLIC_URL + '/images/detail_calender.png'
   }`;
+  const [clublist, setClubList] = useState([]);
+  const get_club_list = async () => {
+    try {
+      await axios.get('http://127.0.0.1:8000/club/').then(res => {
+        // console.log(res);
+        setClubList(res.data);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const post_enroll = async () => {
     try {
       await axios
@@ -65,6 +76,7 @@ function Postdetail({
                     onClick={() => {
                       navigate('/Postlist');
                       post_enroll();
+                      get_club_list();
                     }}
                   >
                     클럽 가입하기
