@@ -26,7 +26,10 @@ function Signup(props) {
     };
     try {
       await axios
-        .post('http://127.0.0.1:8000/accounts/login', data)
+        .post(
+          'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/login',
+          data,
+        )
         .then(res => {
           sessionStorage.setItem('token', res.data);
           axios.defaults.headers.common['Authorization'] = res.data;
@@ -52,7 +55,10 @@ function Signup(props) {
     sessionStorage.clear();
     try {
       await axios
-        .post('http://127.0.0.1:8000/accounts/regist', inputs)
+        .post(
+          'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/regist',
+          inputs,
+        )
         .then(res => {
           post_login();
           navigate('/Signup2');

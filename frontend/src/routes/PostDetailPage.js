@@ -14,10 +14,14 @@ function PostDetailPage(props) {
 
   const get_club = async () => {
     try {
-      await axios.get(`http://127.0.0.1:8000/club/${club_id}`).then(res => {
-        // console.log(res);
-        setClub(res.data);
-      });
+      await axios
+        .get(
+          `http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/${club_id}`,
+        )
+        .then(res => {
+          // console.log(res);
+          setClub(res.data);
+        });
     } catch (err) {
       console.log(err);
     }

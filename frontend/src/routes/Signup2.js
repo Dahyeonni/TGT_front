@@ -31,11 +31,15 @@ function Signup2(props) {
     //   console.log(key, ':', formData.get(key));
     // }
     await axios
-      .patch('http://127.0.0.1:8000/accounts/profile_update', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
+      .patch(
+        'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/profile_update',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
         },
-      })
+      )
       .then(function (res) {
         navigate('/Mainpage');
       })
