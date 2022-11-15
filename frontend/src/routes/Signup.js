@@ -90,11 +90,11 @@ function Signup(props) {
 
         <section className="login_container">
           <div className="login_name_choice">
-            <div className="login_name_2" onClick={onClickLogin}>
+            <div className="login_name_2" onClick={() => onClickLogin()}>
               로그인
             </div>
 
-            <div className="signup_name_2" onClick={onClickSignup}>
+            <div className="signup_name_2" onClick={() => onClickSignup()}>
               회원가입
             </div>
           </div>
@@ -158,7 +158,7 @@ function Signup(props) {
             </div>
 
             <div className="login_btn_btn">
-              <button className="login_btn" onClick={post_signup}>
+              <button className="login_btn" onClick={() => post_signup()}>
                 회원가입
               </button>
             </div>
