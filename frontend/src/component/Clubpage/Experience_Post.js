@@ -90,7 +90,7 @@ function Experience_Post({ club_id }) {
             {post_list.slice(0, 6).map((data, id) => (
               <SwiperSlide key={id}>
                 <img
-                  src={`http://127.0.0.1:8000${data.post}`}
+                  src={`http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000${data.post}`}
                   alt="post 이미지"
                   height={'100vh'}
                   width={'100%'}
@@ -110,7 +110,7 @@ function Experience_Post({ club_id }) {
             {post_list.slice(6).map((data, id) => (
               <SwiperSlide key={id}>
                 <img
-                  src={`http://127.0.0.1:8000${data.post}`}
+                  src={`http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000${data.post}`}
                   alt="post 이미지"
                   height={'100vh'}
                   width={'100%'}

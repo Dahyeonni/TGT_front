@@ -54,7 +54,7 @@ function Postdetail({
   };
 
   const navigate = useNavigate();
-  const imageUrl = 'http://127.0.0.1:8000' + image;
+  const imageUrl = 'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000' + image;
   return (
     <>
       <Navbar />

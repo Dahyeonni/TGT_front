@@ -17,7 +17,7 @@ function Clubpage() {
   const { club_id } = useParams();
   const [club, setClub] = useState([]);
   const navigate = useNavigate();
-  const imageUrl = 'http://127.0.0.1:8000' + club.image;
+  const imageUrl = 'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000' + club.image;
   const image_style3 = {
     backgroundImage: `url(${imageUrl})`,
     backgroundRepeat: 'no-repeat',

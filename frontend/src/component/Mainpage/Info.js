@@ -6,7 +6,7 @@ const edit_image = `${process.env.PUBLIC_URL + '/images/edit.png'}`;
 function Info({ id, email, username, user_image, content }) {
   const navigate = useNavigate();
 
-  const imageUrl = 'http://127.0.0.1:8000' + user_image;
+  const imageUrl = 'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000' + user_image;
   const image_style = {
     backgroundImage: `url(${imageUrl})`,
     backgroundRepeat: 'no-repeat',
