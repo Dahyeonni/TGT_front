@@ -29,8 +29,8 @@ function PostListPage() {
     }
   };
 
-  const category_list = ['hobby', 'study', 'daily', 'exercise', 'etc'];
-  const category_list_ko = ['취미/교양', '스터디', '일상', '운동', '기타'];
+  const category_list = ['exercise', 'study', 'daily', 'hobby', 'etc'];
+  const category_list_ko = ['운동', '스터디', '일상', '취미/교양', '기타'];
 
   return (
     <>
@@ -53,7 +53,7 @@ function PostListPage() {
                   : null
               }
             >
-              취미/교양
+              운동
             </section>
             <hr />
             <section
@@ -95,7 +95,7 @@ function PostListPage() {
                   : null
               }
             >
-              운동
+              취미/교양
             </section>
             <hr />
             <section

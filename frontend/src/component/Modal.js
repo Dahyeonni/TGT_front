@@ -17,7 +17,7 @@ function Modal({ club }) {
         background: 'orange',
         borderRadius: '10px',
         fontSize: '2.5vmin',
-        width: '20vmin',
+        width: '30vmin',
         padding: '3vmin',
         color: 'black',
       }}
