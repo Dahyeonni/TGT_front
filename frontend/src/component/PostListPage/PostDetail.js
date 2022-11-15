@@ -29,7 +29,7 @@ function Postdetail({
     try {
       await axios
         .get(
-          'https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/',
+          'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/',
         )
         .then(res => {
           // console.log(res);
@@ -43,7 +43,7 @@ function Postdetail({
     try {
       await axios
         .post(
-          `https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/club_regist/${id}`,
+          `http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/club_regist/${id}`,
         )
         .then(res => {
           // console.log(res);
@@ -54,9 +54,7 @@ function Postdetail({
   };
 
   const navigate = useNavigate();
-  const imageUrl =
-    'https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000' +
-    image;
+  const imageUrl = 'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000' + image;
   return (
     <>
       <Navbar />

@@ -32,7 +32,7 @@ function Signup2(props) {
     // }
     await axios
       .patch(
-        'https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/profile_update',
+        'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/profile_update',
         formData,
         {
           headers: {

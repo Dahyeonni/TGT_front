@@ -20,7 +20,7 @@ function Club_Todo({ club_id, date }) {
     try {
       await axios
         .get(
-          'https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/todolist/',
+          'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/todolist/',
         )
         .then(res => {
           // console.log('투두리스트 조회', res);
@@ -40,7 +40,7 @@ function Club_Todo({ club_id, date }) {
     try {
       await axios
         .post(
-          'https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/todolist/',
+          'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/todolist/',
           data,
         )
         .then(res => {
@@ -83,7 +83,7 @@ function Club_Todo({ club_id, date }) {
               try {
                 await axios
                   .patch(
-                    `https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/todolist/${todo.id}/`,
+                    `http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/todolist/${todo.id}/`,
                     {
                       club: club_id,
                       title: todo.title,
@@ -104,7 +104,7 @@ function Club_Todo({ club_id, date }) {
               try {
                 await axios
                   .delete(
-                    `https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/todolist/${todo.id}/`,
+                    `http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/club/todolist/${todo.id}/`,
                   )
                   .then(res => console.log(res));
               } catch (err) {

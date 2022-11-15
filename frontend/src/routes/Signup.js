@@ -27,7 +27,7 @@ function Signup(props) {
     try {
       await axios
         .post(
-          'https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/login',
+          'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/login',
           data,
         )
         .then(res => {
@@ -56,7 +56,7 @@ function Signup(props) {
     try {
       await axios
         .post(
-          'https://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/regist',
+          'http://ec2-3-35-168-199.ap-northeast-2.compute.amazonaws.com:8000/accounts/regist',
           inputs,
         )
         .then(res => {
