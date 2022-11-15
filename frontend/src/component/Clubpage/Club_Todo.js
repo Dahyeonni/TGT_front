@@ -8,6 +8,7 @@ const trash = `${process.env.PUBLIC_URL + '/images/trash.png'}`;
 
 function Club_Todo({ club_id, date }) {
   const [todos, setTodo] = useState([]);
+  const [delete_bool, setDeleteBool] = useState(false);
 
   const [data, setData] = useState({
     club: '',
@@ -25,6 +26,9 @@ function Club_Todo({ club_id, date }) {
       console.log(err);
     }
   };
+  useEffect(() => {
+    get_todo();
+  }, [delete_bool]);
 
   const [post, setPost] = useState(false);
 
@@ -60,6 +64,7 @@ function Club_Todo({ club_id, date }) {
           }}
         ></Input>
         <img src={plus_image} style={Plus} onClick={() => post_todo()} />
+
         <img src={line_image} style={Line} />
 
         {todos
@@ -70,10 +75,11 @@ function Club_Todo({ club_id, date }) {
             const put_check = async () => {
               try {
                 await axios
-                  .put(`http://127.0.0.1:8000/club/todoupdate/${todo.id}/`, {
+                  .patch(`http://127.0.0.1:8000/club/todolist/${todo.id}/`, {
                     club: club_id,
                     title: todo.title,
                     box: !todo.box,
+                    todo_date: date,
                   })
                   .then(res => {
                     console.log('투두리스트 조회', res);
@@ -87,7 +93,7 @@ function Club_Todo({ club_id, date }) {
             const delete_todo = async () => {
               try {
                 await axios
-                  .delete(`http://127.0.0.1:8000/club/todoupdate/${todo.id}/`)
+                  .delete(`http://127.0.0.1:8000/club/todolist/${todo.id}/`)
                   .then(res => console.log(res));
               } catch (err) {
                 console.log(err);
@@ -100,7 +106,8 @@ function Club_Todo({ club_id, date }) {
                     type="checkbox"
                     defaultChecked={todo.box}
                     onClick={() => {
-                      //   put_check();
+                      put_check();
+                      window.location.reload(false);
                     }}
                   />
                   <Todo_text>{todo.title}</Todo_text>
@@ -108,7 +115,10 @@ function Club_Todo({ club_id, date }) {
                     src={trash}
                     alt="삭제"
                     onClick={() => {
-                      //   delete_todo();
+                      delete_todo();
+                      // window.location.reload(false);
+                      setDeleteBool(!delete_bool);
+                      get_todo();
                     }}
                   />
                 </Todo_list>
@@ -151,6 +161,7 @@ const Plus = {
   height: '3vmin',
   float: 'right',
   marginTop: '1vmin',
+  cursor: 'pointer',
 };
 
 const Line = { width: '100%', height: '0.2vmin' };

@@ -29,6 +29,7 @@ function Todo({ date, clubs, user_id }) {
   };
 
   const [todos, setTodo] = useState([]);
+
   const get_todo = async () => {
     try {
       await axios.get('http://127.0.0.1:8000/club/todolist/').then(res => {
@@ -42,6 +43,12 @@ function Todo({ date, clubs, user_id }) {
   useEffect(() => {
     get_todo();
   }, [post]);
+
+  const [delete_bool, setDeleteBool] = useState(false);
+
+  useEffect(() => {
+    get_todo();
+  }, [delete_bool]);
 
   const onReset = () => {
     setData({ club: '', title: '', todo_date: '' });
@@ -85,6 +92,7 @@ function Todo({ date, clubs, user_id }) {
                         onClick={() => {
                           post_todo();
                           onReset();
+                          // window.location.reload(false);
                         }}
                       ></Plus_icon>
                     </Input_div>
@@ -93,17 +101,17 @@ function Todo({ date, clubs, user_id }) {
                         .filter(todo => todo.todo_date === date)
                         .filter(todo => todo.club === club.id)
                         .filter(todo => todo.user === user_id)
-
                         .map(todo => {
                           const put_check = async () => {
                             try {
                               await axios
-                                .put(
-                                  `http://127.0.0.1:8000/club/todoupdate/${todo.id}/`,
+                                .patch(
+                                  `http://127.0.0.1:8000/club/todolist/${todo.id}/`,
                                   {
                                     club: club.id,
                                     title: todo.title,
                                     box: !todo.box,
+                                    todo_date: date,
                                   },
                                 )
                                 .then(res => {
@@ -119,7 +127,7 @@ function Todo({ date, clubs, user_id }) {
                             try {
                               await axios
                                 .delete(
-                                  `http://127.0.0.1:8000/club/todoupdate/${todo.id}/`,
+                                  `http://127.0.0.1:8000/club/todolist/${todo.id}/`,
                                 )
                                 .then(res => console.log(res));
                             } catch (err) {
@@ -134,6 +142,8 @@ function Todo({ date, clubs, user_id }) {
                                   defaultChecked={todo.box}
                                   onClick={() => {
                                     put_check();
+                                    window.location.reload(false);
+                                    // get_todo();
                                   }}
                                 />
                                 <Todo_text>{todo.title}</Todo_text>
@@ -142,6 +152,8 @@ function Todo({ date, clubs, user_id }) {
                                   alt="삭제"
                                   onClick={() => {
                                     delete_todo();
+                                    setDeleteBool(!delete_bool);
+                                    get_todo();
                                   }}
                                 />
                               </Todo_list>
